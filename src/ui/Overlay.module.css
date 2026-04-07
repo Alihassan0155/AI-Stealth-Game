@@ -1,0 +1,156 @@
+.overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(5,5,8,0.97); z-index: 10;
+  animation: fadeIn 0.3s ease; padding: 24px 20px; gap: 14px; overflow-y: auto;
+}
+
+.badge {
+  font-family: var(--font-display); font-size: 11px;
+  color: rgba(255,136,0,0.9); letter-spacing: 3px;
+  border: 1px solid rgba(255,136,0,0.3); padding: 4px 14px;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  background: rgba(255,136,0,0.07);
+}
+
+.title {
+  font-family: var(--font-display); font-size: clamp(22px,4vw,36px);
+  font-weight: 900; letter-spacing: 4px; text-shadow: 0 0 30px currentColor; margin: 0;
+}
+
+.sub   { font-size: 11px; letter-spacing: 2px; color: rgba(0,212,255,0.6); margin: 0; }
+
+.pickLabel {
+  font-family: var(--font-display); font-size: 10px;
+  letter-spacing: 3px; color: rgba(0,212,255,0.45); margin: 2px 0 0;
+}
+
+/* ── 2x2 MODE GRID ──────────────────────────────────── */
+.modeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 540px;
+}
+
+.modeCard {
+  position: relative;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+  padding: 18px 16px 16px 18px;
+  background: rgba(0,212,255,0.03);
+  border: 1px solid rgba(0,212,255,0.12);
+  color: var(--cyan); cursor: pointer;
+  transition: all 0.18s ease;
+  clip-path: polygon(0% 0%, calc(100% - 16px) 0%, 100% 16px, 100% 100%, 16px 100%, 0% calc(100% - 16px));
+}
+
+.modeCard::before {
+  content: '';
+  position: absolute; top: -1px; right: 10px;
+  width: 24px; height: 1px;
+  background: rgba(0,212,255,0.5);
+  transform: rotate(45deg) translateX(8px);
+  pointer-events: none;
+}
+
+.modeCard:hover {
+  background: rgba(0,212,255,0.09);
+  border-color: rgba(0,212,255,0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,212,255,0.12), inset 0 1px 0 rgba(0,212,255,0.15);
+}
+
+.modeCard.selected {
+  background: rgba(0,255,136,0.08);
+  border-color: rgba(0,255,136,0.6);
+  box-shadow: 0 0 24px rgba(0,255,136,0.2), inset 0 0 12px rgba(0,255,136,0.05);
+}
+
+.modeTop   { display: flex; align-items: center; gap: 10px; width: 100%; }
+.modeIcon  { font-size: 24px; line-height: 1; flex-shrink: 0; }
+.modeLabel { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; color: #00ff88; }
+.modeDesc  { font-size: 10px; color: rgba(0,212,255,0.45); text-align: left; line-height: 1.6; margin: 0; }
+
+/* ── 2x2 DIFFICULTY GRID ────────────────────────────── */
+.diffGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 540px;
+}
+
+.diffCard {
+  position: relative;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+  padding: 16px 14px 14px 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  cursor: pointer; transition: all 0.18s ease;
+  clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0% 100%);
+}
+
+.diffCard::after {
+  content: '';
+  position: absolute; bottom: 10px; right: -1px;
+  width: 1px; height: 24px;
+  background: rgba(255,255,255,0.2);
+  transform: rotate(45deg) translateY(-8px);
+  pointer-events: none;
+  transition: background 0.18s;
+}
+
+.diffCard:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.diffCard.selected {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border-color: var(--accent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 30%, transparent),
+              inset 0 0 10px color-mix(in srgb, var(--accent) 8%, transparent);
+}
+.diffCard.selected::after { background: var(--accent); }
+
+.diffTop   { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.diffStars { font-size: 13px; letter-spacing: 2px; color: rgba(255,200,0,0.85); }
+.diffLabel { font-family: var(--font-display); font-size: 11px; letter-spacing: 2px; margin-top: 2px; }
+.diffDesc  { font-size: 10px; color: rgba(0,212,255,0.4); text-align: left; line-height: 1.6; }
+
+/* ── STATS ──────────────────────────────────────────── */
+.stats {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6px 28px; font-size: 11px; color: rgba(0,212,255,0.5); letter-spacing: 1px;
+  background: rgba(0,212,255,0.03); border: 1px solid rgba(0,212,255,0.1);
+  padding: 14px 20px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+.stats div  { display: flex; justify-content: space-between; gap: 12px; }
+.stats span { color: #00ff88; font-weight: bold; }
+
+/* ── BUTTONS ────────────────────────────────────────── */
+.btnRow { display: flex; gap: 12px; align-items: center; margin-top: 4px; }
+
+.btn {
+  font-family: var(--font-display); font-size: 11px; letter-spacing: 2px;
+  color: #050508; background: #00ff88; border: none; padding: 11px 30px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: background 0.2s, transform 0.1s, opacity 0.2s; cursor: pointer;
+}
+.btn:hover:not(:disabled) { background: #00d4ff; transform: scale(1.04); }
+.btn:disabled             { opacity: 0.3; cursor: not-allowed; }
+
+.btnSecondary {
+  font-family: var(--font-display); font-size: 10px; letter-spacing: 2px;
+  color: rgba(0,212,255,0.6); background: transparent;
+  border: 1px solid rgba(0,212,255,0.25); padding: 10px 20px;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  transition: all 0.18s; cursor: pointer;
+}
+.btnSecondary:hover { color: #00d4ff; border-color: rgba(0,212,255,0.6); }
+
+@keyframes fadeIn { from { opacity:0; transform:translateY(8px);} to { opacity:1; transform:translateY(0);} }

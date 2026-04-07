@@ -1,0 +1,104 @@
+/* *, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cyan:   #00d4ff;
+  --green:  #00ff88;
+  --red:    #ff3333;
+  --orange: #ff8800;
+  --bg:     #050508;
+  --bg2:    #0a0a12;
+  --border: rgba(0, 212, 255, 0.15);
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-display: 'Orbitron', sans-serif;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: auto;   
+}
+
+body {
+  background: var(--bg);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+canvas {
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-display);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cyan:         #00d4ff;
+  --green:        #00ff88;
+  --red:          #ff3333;
+  --orange:       #ff8800;
+  --bg:           #050508;
+  --bg2:          #0a0a12;
+  --border:       rgba(0, 212, 255, 0.15);
+  --font-mono:    'Share Tech Mono', monospace;
+  --font-display: 'Orbitron', sans-serif;
+}
+
+html, body, #root {
+  width:    100%;
+  height:   100%;
+  overflow: hidden;   /* hard stop — nothing scrolls */
+  margin:   0;
+  padding:  0;
+}
+
+body {
+  background:  var(--bg);
+  color:       var(--cyan);
+  font-family: var(--font-mono);
+  /* NO display:flex here — App.jsx owns the layout */
+}
+
+canvas {
+  display: block;
+}
+
+button {
+  cursor:      pointer;
+  font-family: var(--font-display);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
